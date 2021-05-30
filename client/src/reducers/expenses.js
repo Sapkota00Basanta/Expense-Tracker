@@ -1,11 +1,11 @@
+import { FETCH_ALL, CREATE } from "../constants/actionTypes.js";
+
 const expenses = (state = [], action) => {
   switch (action.type) {
-    case "FETCH_ALL":
+    case FETCH_ALL:
       return action.payload;
-    case "CREATE":
+    case CREATE:
       return [...state, action.payload];
-    case "DOWNLOAD":
-      return state;
     default:
       return state;
   }

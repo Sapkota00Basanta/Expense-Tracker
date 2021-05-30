@@ -1,15 +1,18 @@
-// import {useDispatch} from 'react-redux';
+import downloadFile from 'downloadjs';
 
-// import {download} from '../../actions/expenses';
 import ExpenseItem from "./ExpenseItem";
 import "./UnFilteredExpensesList.css";
+import {baseURL} from '../../env.json';
+
 
 const UnFilteredExpensesList = (props) => {
-  // const dispatch = useDispatch();
+  const url = `${baseURL}/api/expenses`;
 
-  // const exportHandler = () => {
-  //   dispatch(download());
-  // }
+  const exportHandler = async () => {
+    const res = await fetch(`${url}/download`);
+    const blob = await res.blob();
+    downloadFile(blob, 'test.csv');
+  }
   if (props.expenses.length === 0) {
     return <h2 className="expenses-list__fallback"> No Expenses Found.</h2>;
   }
@@ -17,7 +20,7 @@ const UnFilteredExpensesList = (props) => {
   return (
     <ul className="expenses-list">
       <h2> Total Expenses </h2>
-      {/* <button onClick={exportHandler}>Export</button> */}
+      <button onClick={exportHandler}>Export</button>
       {props.expenses.map((expense) => (
         <ExpenseItem
           key={expense._id}

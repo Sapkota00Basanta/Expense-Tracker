@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/api/expenses', getExpense);
 router.post('/api/expenses', createExpense);
-//router.get('/api/expenses/download', download);
+router.get('/api/expenses/download', download);
 
 export default router;

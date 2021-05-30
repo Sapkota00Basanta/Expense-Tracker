@@ -1,0 +1,6 @@
+const FETCH_ALL = "FETCH_ALL";
+const UPDATE = "UPDATE";
+const DELETE = "DELETE";
+const CREATE = "CREATE";
+
+export { FETCH_ALL, UPDATE, DELETE, CREATE };
